@@ -1,5 +1,9 @@
 package ru.sberbank.jschool.homework.classloaders;
 
+import java.io.File;
+import java.nio.file.NotDirectoryException;
+import java.util.Arrays;
+
 public class PluginManager {
 
     // directory that contains plugin folders
@@ -20,7 +24,24 @@ public class PluginManager {
      *                                   or it contains no .class files
      */
     public Plugin loadPlugin(String pluginName) throws PluginNotFoundException {
-        //TODO implement
-        throw new PluginNotFoundException("couldn't locate plugin " + pluginName);
+        String pathToPlugin = rootDirectory + File.separator + pluginName;
+        try {
+            ForPluginClassLoader pcl =
+                    new ForPluginClassLoader(Plugin.class.getClassLoader(), pathToPlugin);
+            File[] files = getClassFiles(pathToPlugin);
+            return (Plugin) pcl.loadClass(files[0].getName().replace(".class", "")).newInstance();
+        } catch (Exception e) {
+            throw new PluginNotFoundException("couldn't locate plugin " + pluginName);
+        }
+    }
+
+    private File[] getClassFiles(String directory) throws NotDirectoryException {
+        File dir = new File(directory);
+        if (!dir.isDirectory()) {
+            throw new NotDirectoryException("The directory not exist");
+        }
+        return Arrays.stream(dir.listFiles())
+                .filter(file -> file.getName().endsWith(".class"))
+                .toArray(File[]::new);
     }
 }
