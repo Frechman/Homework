@@ -3,6 +3,7 @@ package ru.sberbank.jschool.homework.classloaders;
 import java.io.File;
 import java.nio.file.NotDirectoryException;
 import java.util.Arrays;
+import java.util.Objects;
 
 public class PluginManager {
 
@@ -40,7 +41,7 @@ public class PluginManager {
         if (!dir.isDirectory()) {
             throw new NotDirectoryException("The directory not exist");
         }
-        return Arrays.stream(dir.listFiles())
+        return Arrays.stream(Objects.requireNonNull(dir.listFiles()))
                 .filter(file -> file.getName().endsWith(".class"))
                 .toArray(File[]::new);
     }

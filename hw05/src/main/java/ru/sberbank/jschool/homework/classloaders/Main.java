@@ -3,8 +3,8 @@ package ru.sberbank.jschool.homework.classloaders;
 public class Main {
 
     public static void main(String[] args) {
-        PluginManager manager =
-                new PluginManager("F:/Projects/sber/HomeworkGavrilov/hw05/src/main/java/ru/sberbank/jschool/homework");
+        PluginManager manager = new PluginManager(
+                "F:/Projects/sber/HomeworkGavrilov/hw05/src/main/java/ru/sberbank/jschool/homework");
 
         try {
             Plugin my = manager.loadPlugin("classloaders");
