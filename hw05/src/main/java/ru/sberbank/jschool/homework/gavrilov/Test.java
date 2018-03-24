@@ -1,4 +1,4 @@
-package main.java.ru.sberbank.jschool.homework.gavrilov;
+package ru.sberbank.jschool.homework.gavrilov;
 
 public class Test {
 

@@ -1,4 +1,4 @@
-package main.java.ru.sberbank.jschool.homework.gavrilov;
+package ru.sberbank.jschool.homework.gavrilov;
 
 import java.io.File;
 import java.io.IOException;
@@ -7,7 +7,6 @@ import java.nio.file.Path;
 import java.nio.file.Paths;
 
 public class EncryptedClassLoader extends ClassLoader {
-
 
     private String folder;
     private int offset;
@@ -28,7 +27,6 @@ public class EncryptedClassLoader extends ClassLoader {
         }
     }
 
-
     private byte[] getDecryptBytes(String binaryClassName) throws IOException {
         Path path = Paths.get(folder + binaryClassName.replace(".", File.separator) + ".class.caesar");
         byte[] result = new byte[0];
@@ -42,7 +40,6 @@ public class EncryptedClassLoader extends ClassLoader {
             System.out.println("Error path!");
             e.printStackTrace();
         }
-
         return result;
     }
 }

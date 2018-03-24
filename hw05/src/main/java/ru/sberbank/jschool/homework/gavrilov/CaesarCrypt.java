@@ -1,4 +1,4 @@
-package main.java.ru.sberbank.jschool.homework.gavrilov;
+package ru.sberbank.jschool.homework.gavrilov;
 
 import java.io.FileNotFoundException;
 import java.io.FileOutputStream;
@@ -27,8 +27,8 @@ public class CaesarCrypt {
     }
 
     public static void main(String[] args) {
-
-        cryptClass("F:\\Projects\\sber\\HomeworkGavrilov\\hw05\\src\\main\\java\\ru\\sberbank\\jschool\\homework\\gavrilov\\Test.class", 10);
-
+        //Чтобы прямо в IntelliJIdea сработал метод, нужно ручками скомпилить класс Test прямо в этом пакете.
+        cryptClass("F:\\Projects\\sber\\HomeworkGavrilov\\hw05" +
+                "\\src\\main\\java\\ru\\sberbank\\jschool\\homework\\gavrilov\\Test.class", 10);
     }
 }
